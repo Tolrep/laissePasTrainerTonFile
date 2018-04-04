@@ -73,19 +73,18 @@ if (!empty($_GET['suppr'])){
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <div class="thumbnail">
         <?php
         foreach ($fileList as $list){
-            ?>
-            <ul>
-                <li><img src="<?=$fileImage . '/' . $list?>"></li>
+        ?>
+        <div class="img-thumbnail text-center">
+            <div class="col-4">
+            <img src="<?=$fileImage . '/' . $list?>">
                 <?=$list . '<br>'?>
-                <a href="index.php?suppr=<?=$list?>">Supprimer</a>
-            </ul>
-        <?php
-        }?>
+                <button><a class="text-center" href="index.php?suppr=<?=$list?>">Delete</a></button>
             </div>
         </div>
+        <?php
+        }?>
+        </div>
     </div>
-</div>
+
