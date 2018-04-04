@@ -1,6 +1,7 @@
 <?php
 
 $filesImageName = [];
+$files = [];
 
 if(isset($_POST['submit'])) {
     if (!empty($_FILES['files']['name'][0])) {
@@ -17,16 +18,18 @@ if(isset($_POST['submit'])) {
                 }
             }
         }
-        foreach ($_FILES['files']['name'] as $i => $file_name) {
-            $tmpFilePath = $_FILES['files']['tmp_name'][$i];
-            if ($tmpFilePath != "") {
-                $extension = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
-                $shortname = $_FILES['files']['name'][$i];
-                $filePath = "img/" . 'image' . uniqid() . '.' . $extension;
-                $files[] = substr($filePath, 4);
+        if($tcheck === 'ok') {
+            foreach ($_FILES['files']['name'] as $i => $file_name) {
+                $tmpFilePath = $_FILES['files']['tmp_name'][$i];
+                if ($tmpFilePath != "") {
+                    $extension = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
+                    $shortname = $_FILES['files']['name'][$i];
+                    $filePath = "img/" . 'image' . uniqid() . '.' . $extension;
+                    $files[] = substr($filePath, 4);
 
+                }
+                move_uploaded_file($tmpFilePath, $filePath);
             }
-            move_uploaded_file($tmpFilePath, $filePath);
         }
     }
         if (is_array($files)) {
