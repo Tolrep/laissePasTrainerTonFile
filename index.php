@@ -8,17 +8,20 @@ if(isset($_POST['submit'])) {
         foreach ($_FILES['files']['type'] as $type) {
             if ($type != 'image/jpeg' && $type != 'image/png' && $type != 'image/gif') {
                 echo "Format non gere.";
+                die;
             } else {
-                foreach ($_FILES['files']['size'] as $size) {
-                    if ($size > 1000000) {
-                        echo "Image trop lourde desole";
-                    } else {
-                        $tcheck = 'ok';
-                    }
-                }
+                $tcheckType = 'ok';
             }
         }
-        if($tcheck === 'ok') {
+        foreach ($_FILES['files']['size'] as $size) {
+            if ($size > 1000000) {
+                echo "Image trop lourde desole";
+                die;
+            } else {
+                $tcheckSize = 'ok';
+            }
+        }
+        if ($tcheckSize === 'ok'&& $tcheckType === 'ok') {
             foreach ($_FILES['files']['name'] as $i => $file_name) {
                 $tmpFilePath = $_FILES['files']['tmp_name'][$i];
                 if ($tmpFilePath != "") {
@@ -32,6 +35,7 @@ if(isset($_POST['submit'])) {
             }
         }
     }
+
         if (is_array($files)) {
             echo "<h1>Uploaded:</h1>";
             echo "<ul>";
