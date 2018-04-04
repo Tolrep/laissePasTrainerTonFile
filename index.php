@@ -54,25 +54,36 @@ if (!empty($_GET['suppr'])){
 
 ?>
 
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<div class="container">
+    <div class="row justify-content">
+        <div class="col-3">
+            <form action="" enctype="multipart/form-data" method="post">
+                    <h3>Add photo:</h3>
+                    <input name="files[]" type="file" multiple="multiple" />
+                <p><input type="submit" name="submit" value="Submit"></p>
 
-<form action="" enctype="multipart/form-data" method="post">
-
-    <div>
-        <label for='files'>Add photo:</label>
-        <input name="files[]" type="file" multiple="multiple" />
+            </form>
+        </div>
     </div>
+</div>
 
-    <p><input type="submit" name="submit" value="Submit"></p>
-
-</form>
-
-<?php
-foreach ($fileList as $list){
-    ?>
-<ul>
-    <li><img src="<?=$fileImage . '/' . $list?>"></li>
-    <p><?=$list?></p>
-    <p><a href="index.php?suppr=<?=$list?>">Supprimer</a></p>
-</ul>
-<?php
-}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        <?php
+        foreach ($fileList as $list){
+            ?>
+            <ul>
+                <li><img src="<?=$fileImage . '/' . $list?>"></li>
+                <?=$list . '<br>'?>
+                <a href="index.php?suppr=<?=$list?>">Supprimer</a>
+            </ul>
+        <?php
+        }?>
+        </div>
+    </div>
+</div>
