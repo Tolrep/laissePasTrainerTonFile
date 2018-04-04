@@ -60,7 +60,7 @@ if (!empty($_GET['suppr'])){
 </head>
 <div class="container">
     <div class="row justify-content">
-        <div class="col-3">
+        <div class="addFileForm text-center thumbnail col-x-12">
             <form action="" enctype="multipart/form-data" method="post">
                     <h3>Add photo:</h3>
                     <input name="files[]" type="file" multiple="multiple" />
@@ -74,6 +74,7 @@ if (!empty($_GET['suppr'])){
 <div class="container">
     <div class="row">
         <div class="col-3">
+            <div class="thumbnail">
         <?php
         foreach ($fileList as $list){
             ?>
@@ -84,6 +85,7 @@ if (!empty($_GET['suppr'])){
             </ul>
         <?php
         }?>
+            </div>
         </div>
     </div>
 </div>
