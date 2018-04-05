@@ -7,6 +7,7 @@ if(isset($_POST['submit'])) {
     if (!empty($_FILES['files']['name'][0])) {
         foreach ($_FILES['files']['type'] as $type) {
             if ($type != 'image/jpeg' && $type != 'image/png' && $type != 'image/gif') {
+                header('Location: index.php');
                 echo "Format non gere.";
                 die;
             } else {
@@ -87,7 +88,7 @@ if (!empty($_GET['suppr'])){
             <div class="col-4">
             <img src="<?=$fileImage . '/' . $list?>">
                 <?=$list . '<br>'?>
-                <button><a class="text-center" href="index.php?suppr=<?=$list?>">Delete</a></button>
+                <a class="btn btn-danger text-center" href="index.php?suppr=<?=$list?>">Delete</a>
             </div>
         </div>
         <?php
